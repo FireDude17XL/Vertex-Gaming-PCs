@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vertex Gaming — Built to Perform. Designed to Dominate.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#EF1B1B; --red-bright:#FF3535;
+  --black:#080808; --graphite:#141414; --steel:#292929;
+  --silver:#D6D6D6; --white:#F5F5F5;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  background:var(--black); color:var(--white);
+  font-family:'Inter',sans-serif; line-height:1.6;
+  overflow-x:hidden;
+}
+h1,h2,h3,.head{font-family:'Oxanium',sans-serif; color:var(--silver); font-weight:700; letter-spacing:.01em}
+a{color:inherit; text-decoration:none}
+.wrap{max-width:1180px; margin:0 auto; padding:0 24px}
+img,svg{max-width:100%}
+
+/* nav */
+header{
+  position:sticky; top:env(safe-area-inset-top,0px); z-index:50;
+  background:rgba(8,8,8,.85); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--steel);
+}
+nav{display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:1180px; margin:0 auto}
+.logo{font-family:'Oxanium',sans-serif; font-weight:800; font-size:1.3rem; color:var(--white)}
+.logo span{color:var(--red)}
+.nav-links{display:flex; gap:32px; font-size:.92rem; font-weight:500}
+.nav-links a{color:var(--silver); transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.btn{
+  display:inline-block; padding:12px 26px; border-radius:4px;
+  font-family:'Oxanium',sans-serif; font-weight:600; font-size:.88rem;
+  cursor:pointer; transition:.2s ease; border:1.5px solid transparent;
+}
+.btn-primary{background:var(--red); color:#fff}
+.btn-primary:hover{background:var(--red-bright); box-shadow:0 0 22px rgba(239,27,27,.5)}
+.btn-outline{background:transparent; border-color:var(--red); color:var(--white)}
+.btn-outline:hover{background:rgba(239,27,27,.15)}
+.menu-toggle{display:none; background:none; border:none; color:var(--white); font-size:1.6rem; cursor:pointer}
+
+/* hero */
+.hero{
+  position:relative; padding:120px 24px 100px; text-align:center;
+  background:
+    radial-gradient(ellipse 600px 400px at 50% 30%, rgba(239,27,27,.16), transparent 70%),
+    linear-gradient(180deg, var(--black), #0c0c0c);
+  overflow:hidden;
+}
+.hero::before{
+  content:""; position:absolute; inset:0; z-index:0; opacity:.5;
+  background-image:
+    linear-gradient(rgba(41,41,41,.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(41,41,41,.4) 1px, transparent 1px);
+  background-size:52px 52px;
+  mask-image:radial-gradient(ellipse 700px 500px at 50% 25%, #000 0%, transparent 75%);
+}
+.hero-inner{position:relative; z-index:1; max-width:820px; margin:0 auto}
+.hero h1{font-size:clamp(2.4rem,6vw,4.4rem); line-height:1.05; color:var(--white)}
+.hero h1 em{font-style:normal; color:var(--red)}
+.hero p{margin:26px auto 40px; max-width:560px; color:var(--silver); font-size:1.08rem}
+.hero-btns{display:flex; gap:16px; justify-content:center; flex-wrap:wrap}
+.hero-graphic{margin:70px auto 0; max-width:640px}
+
+/* sections */
+section{padding:90px 0}
+.section-head{max-width:600px; margin-bottom:48px}
+.eyebrow{color:var(--red); font-weight:600; font-size:.85rem; margin-bottom:10px}
+.section-head h2{font-size:clamp(1.7rem,3.4vw,2.4rem)}
+.section-head p{color:var(--silver); margin-top:14px}
+
+/* systems */
+.systems-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px}
+.sys-card{
+  background:var(--graphite); border:1px solid var(--steel); border-radius:6px;
+  padding:34px 28px; transition:.25s ease; position:relative;
+}
+.sys-card:hover{border-color:var(--red); box-shadow:0 0 30px rgba(239,27,27,.15); transform:translateY(-4px)}
+.sys-card .tag{font-size:.78rem; color:var(--red); font-weight:600; margin-bottom:8px}
+.sys-card h3{font-size:1.5rem; margin-bottom:14px}
+.sys-card ul{list-style:none; color:var(--silver); font-size:.92rem; margin-bottom:26px}
+.sys-card li{padding:5px 0; border-bottom:1px solid rgba(41,41,41,.6)}
+.sys-card li:last-child{border-bottom:none}
+
+/* why */
+.why-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px}
+.why-card{background:var(--graphite); border:1px solid var(--steel); border-radius:6px; padding:26px 22px}
+.why-card h3{font-size:1.05rem; margin-bottom:10px; color:var(--white)}
+.why-card p{color:var(--silver); font-size:.9rem}
+.why-num{color:var(--red); font-family:'Oxanium',sans-serif; font-weight:700; font-size:.82rem; margin-bottom:14px}
+
+/* performance table */
+.perf-table{width:100%; border-collapse:collapse; background:var(--graphite); border:1px solid var(--steel); border-radius:6px; overflow:hidden}
+.perf-table th,.perf-table td{padding:16px 18px; text-align:left; font-size:.92rem}
+.perf-table th{background:#1a1a1a; color:var(--silver); font-family:'Oxanium',sans-serif; font-weight:600; font-size:.82rem; text-transform:uppercase; letter-spacing:.04em}
+.perf-table td{border-top:1px solid var(--steel); color:var(--white)}
+.perf-table td:not(:first-child), .perf-table th:not(:first-child){color:var(--red); font-weight:600}
+.perf-note{color:#888; font-size:.82rem; margin-top:14px}
+
+/* services */
+.services-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+.svc-card{padding:28px; border:1px solid var(--steel); border-radius:6px; background:linear-gradient(180deg,var(--graphite),#101010)}
+.svc-card h3{font-size:1.1rem; margin-bottom:10px}
+.svc-card p{color:var(--silver); font-size:.9rem}
+
+/* build process */
+.process{display:flex; gap:0; position:relative; counter-reset:step}
+.process::before{content:""; position:absolute; top:22px; left:5%; right:5%; height:1px; background:var(--steel)}
+.p-step{flex:1; text-align:center; position:relative; padding:0 12px}
+.p-dot{width:44px; height:44px; border-radius:50%; background:var(--graphite); border:1.5px solid var(--red); display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-family:'Oxanium',sans-serif; font-weight:700; color:var(--red); position:relative; z-index:1}
+.p-step h3{font-size:1rem; margin-bottom:6px}
+.p-step p{color:var(--silver); font-size:.85rem}
+
+/* custom build cta */
+.custom-cta{
+  background:linear-gradient(135deg, #150707, var(--graphite));
+  border:1px solid var(--steel); border-radius:8px; padding:60px 48px;
+  text-align:center; position:relative; overflow:hidden;
+}
+.custom-cta::after{content:""; position:absolute; inset:0; background:radial-gradient(circle at 80% 20%, rgba(239,27,27,.13), transparent 60%)}
+.custom-cta > *{position:relative; z-index:1}
+.custom-cta h2{font-size:clamp(1.6rem,3.5vw,2.3rem); margin-bottom:16px}
+.custom-cta p{color:var(--silver); max-width:520px; margin:0 auto 30px}
+
+/* footer */
+footer{border-top:1px solid var(--steel); padding:56px 0 32px; background:#0a0a0a}
+.foot-top{display:flex; justify-content:space-between; flex-wrap:wrap; gap:40px; margin-bottom:40px}
+.foot-links{display:flex; gap:60px; flex-wrap:wrap}
+.foot-col h4{font-family:'Oxanium',sans-serif; color:var(--silver); font-size:.85rem; margin-bottom:14px}
+.foot-col a{display:block; color:#999; font-size:.88rem; padding:5px 0; transition:.2s}
+.foot-col a:hover{color:var(--red)}
+.foot-social{display:flex; gap:16px; margin-top:6px}
+.foot-social a{color:#999; font-size:.85rem; border:1px solid var(--steel); padding:8px 14px; border-radius:4px}
+.foot-social a:hover{border-color:var(--red); color:var(--white)}
+.foot-bottom{border-top:1px solid var(--steel); padding-top:24px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; color:#777; font-size:.82rem}
+.foot-slogan{color:var(--red); font-weight:600}
+
+@media(max-width:860px){
+  .nav-links{position:fixed; top:65px; left:0; right:0; bottom:0; background:var(--black); flex-direction:column; padding:30px 24px; gap:22px; transform:translateX(100%); transition:.3s ease; font-size:1.05rem}
+  .nav-links.open{transform:translateX(0)}
+  .menu-toggle{display:block}
+  .nav-actions{display:none}
+  .systems-grid,.why-grid,.services-grid{grid-template-columns:1fr}
+  .process{flex-direction:column; gap:28px; align-items:flex-start; text-align:left}
+  .process::before{display:none}
+  .p-step{display:flex; align-items:center; gap:16px; text-align:left; padding:0}
+  .p-dot{margin:0}
+  .perf-table{display:block; overflow-x:auto}
+  .foot-top{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important; scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#" class="logo">VERTEX<span>GAMING</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#systems">Gaming PCs</a>
+      <a href="#custom">Custom Build</a>
+      <a href="#services">Services</a>
+      <a href="#why">About</a>
+      <a href="#footer">Support</a>
+    </div>
+    <div class="nav-actions">
+      <a href="#custom" class="btn btn-primary">Build Your PC</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Built to Perform.<br><em>Designed to Dominate.</em></h1>
+    <p>Custom gaming PCs built around your games, your setup, and your budget — hand-assembled, stress-tested, and benchmarked before they reach your desk.</p>
+    <div class="hero-btns">
+      <a href="#custom" class="btn btn-primary">Build Your PC</a>
+      <a href="#systems" class="btn btn-outline">View Systems</a>
+    </div>
+  </div>
+  <div class="hero-graphic">
+    <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="tglow" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#EF1B1B" stop-opacity="0.55"/>
+          <stop offset="100%" stop-color="#EF1B1B" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <ellipse cx="320" cy="230" rx="220" ry="30" fill="url(#tglow)"/>
+      <g fill="none" stroke="#292929" stroke-width="1.5">
+        <rect x="180" y="60" width="280" height="160" rx="6"/>
+        <line x1="180" y1="60" x2="140" y2="90" />
+        <line x1="460" y1="60" x2="500" y2="90" />
+        <line x1="140" y1="90" x2="140" y2="200" stroke="#EF1B1B" stroke-opacity=".6"/>
+        <line x1="500" y1="90" x2="500" y2="200" />
+      </g>
+      <rect x="200" y="80" width="240" height="120" rx="3" fill="#141414" stroke="#EF1B1B" stroke-opacity=".5"/>
+      <line x1="200" y1="140" x2="440" y2="140" stroke="#EF1B1B" stroke-width="1" stroke-opacity=".7"/>
+      <circle cx="320" cy="140" r="34" fill="none" stroke="#EF1B1B" stroke-width="2"/>
+      <circle cx="320" cy="140" r="34" fill="none" stroke="#EF1B1B" stroke-width="6" stroke-opacity=".2"/>
+    </svg>
+  </div>
+</section>
+
+<section id="systems">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Featured Systems</div>
+      <h2>Three builds. One standard.</h2>
+      <p>Every tier is professionally assembled and benchmarked — the difference is how far you want to push it.</p>
+    </div>
+    <div class="systems-grid">
+      <div class="sys-card">
+        <div class="tag">Entry</div>
+        <h3>Vertex Core</h3>
+        <ul>
+          <li>1080p gaming</li>
+          <li>Esports-ready</li>
+          <li>Great for students</li>
+          <li>First PC builds</li>
+        </ul>
+        <a href="#" class="btn btn-outline">View Core</a>
+      </div>
+      <div class="sys-card">
+        <div class="tag">Mid-to-High</div>
+        <h3>Vertex Pro</h3>
+        <ul>
+          <li>1440p gaming</li>
+          <li>High refresh rate</li>
+          <li>Streaming-capable</li>
+          <li>Content creation</li>
+        </ul>
+        <a href="#" class="btn btn-outline">View Pro</a>
+      </div>
+      <div class="sys-card">
+        <div class="tag">Flagship</div>
+        <h3>Vertex Ultra</h3>
+        <ul>
+          <li>4K gaming</li>
+          <li>Ray tracing</li>
+          <li>VR-ready</li>
+          <li>Professional workloads</li>
+        </ul>
+        <a href="#" class="btn btn-outline">View Ultra</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Why Vertex Gaming</div>
+      <h2>Not mass produced.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><h3>Built by Hand</h3><p>Every system is professionally assembled, not mass produced.</p></div>
+      <div class="why-card"><h3>Performance Tested</h3><p>Each build is stress-tested and benchmarked before delivery.</p></div>
+      <div class="why-card"><h3>Premium Components</h3><p>Trusted parts from established PC hardware manufacturers.</p></div>
+      <div class="why-card"><h3>Built to Upgrade</h3><p>Designed with future expandability in mind.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Performance</div>
+      <h2>Real frame rates, by resolution.</h2>
+    </div>
+    <table class="perf-table">
+      <thead><tr><th>Game</th><th>1080p</th><th>1440p</th><th>4K</th></tr></thead>
+      <tbody>
+        <tr><td>Call of Duty</td><td>240+ FPS</td><td>180+ FPS</td><td>100+ FPS</td></tr>
+        <tr><td>Fortnite</td><td>300+ FPS</td><td>240+ FPS</td><td>140+ FPS</td></tr>
+        <tr><td>Cyberpunk 2077</td><td>180 FPS</td><td>130 FPS</td><td>80 FPS</td></tr>
+        <tr><td>Minecraft RTX</td><td>200 FPS</td><td>160 FPS</td><td>100 FPS</td></tr>
+      </tbody>
+    </table>
+    <p class="perf-note">Benchmarked on Vertex Ultra configurations. Figures vary by build.</p>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Services</div>
+      <h2>Beyond the build.</h2>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card"><h3>Custom PC Builds</h3><p>Complete custom gaming computers, configured to your goals.</p></div>
+      <div class="svc-card"><h3>PC Upgrades</h3><p>GPU, CPU, RAM, storage, and cooling upgrades.</p></div>
+      <div class="svc-card"><h3>PC Repair</h3><p>Troubleshooting hardware and software issues.</p></div>
+      <div class="svc-card"><h3>Performance Optimization</h3><p>BIOS, driver, and Windows tuning for real-world gains.</p></div>
+      <div class="svc-card"><h3>PC Cleaning</h3><p>Dust removal, thermal maintenance, and inspection.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">How It Works</div>
+      <h2>From configuration to delivery.</h2>
+    </div>
+    <div class="process">
+      <div class="p-step"><div class="p-dot">1</div><h3>Configure</h3><p>Select components, budget, and gaming goals.</p></div>
+      <div class="p-step"><div class="p-dot">2</div><h3>Review</h3><p>We check the build for compatibility and performance.</p></div>
+      <div class="p-step"><div class="p-dot">3</div><h3>Build</h3><p>Your system is professionally assembled.</p></div>
+      <div class="p-step"><div class="p-dot">4</div><h3>Test</h3><p>Stability testing and benchmarking, every time.</p></div>
+      <div class="p-step"><div class="p-dot">5</div><h3>Deliver</h3><p>Ready for pickup or shipping.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="custom">
+  <div class="wrap">
+    <div class="custom-cta">
+      <h2>Your PC. Your way.</h2>
+      <p>Choose your performance target, budget, components, and style — we'll configure a system built specifically for you.</p>
+      <a href="#" class="btn btn-primary">Start Your Build</a>
+    </div>
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a href="#" class="logo">VERTEX<span>GAMING</span></a>
+        <div class="foot-social">
+          <a href="#">Instagram</a><a href="#">YouTube</a><a href="#">TikTok</a><a href="#">Discord</a>
+        </div>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4>Company</h4>
+          <a href="#systems">Gaming PCs</a>
+          <a href="#custom">Custom Builds</a>
+          <a href="#services">Services</a>
+          <a href="#why">About</a>
+        </div>
+        <div class="foot-col">
+          <h4>Support</h4>
+          <a href="#">Support</a>
+          <a href="#">Contact</a>
+          <a href="#">Warranty</a>
+        </div>
+        <div class="foot-col">
+          <h4>Legal</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Vertex Gaming. All rights reserved.</span>
+      <span class="foot-slogan">Built to Perform. Designed to Dominate.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('menuToggle').addEventListener('click',function(){
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(function(a){
+  a.addEventListener('click',function(){document.getElementById('navLinks').classList.remove('open');});
+});
+</script>
+
+</body>
+</html>
